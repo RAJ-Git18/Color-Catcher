@@ -1,58 +1,67 @@
 import pygame
 import ball
-
-pygame.init()
+from obstacles import RotatingCircle
 
 
 def gameLoop():
-
+    red_color = (255, 0, 0)
+    blue_color = (0, 0, 255)
+    green_color = (0, 255, 0)
+    yellow_color = (255, 255, 0)
     background_colour = (234, 212, 252)
+
     screen = pygame.display.set_mode((1550, 800), pygame.RESIZABLE)
+
     pygame.display.set_caption("Color Balls")
 
-    ball_position_x = 770
-    ball_position_y = 650
+    ball_position_x = 775
+    ball_position_y = 500
 
-    # Object of the ball
-    ball_purple = ball.Ball(screen, background_colour, 25)
+    # Create the rotating circle
+    circle = RotatingCircle(1550 // 2, 800 // 2, 100, 0.02)
 
-    # To make the window run
+    # objects of the ball
+    ball_red = ball.Ball(screen, red_color, 20)
+
+    # to make the window run
     running = True
 
-    # To make the ball move up
-    up_position = False
-    down_position = False
+    ball_up = True
 
-    # Game loop
+    # game loop
     while running:
         screen.fill(color="black")
-
-        # For loop through the event queue
+        # for loop through the event queue
         for event in pygame.event.get():
+
             # Check for QUIT event
             if event.type == pygame.QUIT:
                 running = False
 
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
-                    up_position = True
+            # elif event.type == pygame.KEYDOWN:
+            #     if event.key == pygame.K_UP:
+            #         while ball_position_y != 300:
+            #             ball_position_y -= 1
+            #             ball_purple = ball.Ball(
+            #                 screen, background_colour, ball_position_x, ball_position_y, 25
+            #             )
 
-        if up_position:
+            #             print(ball_position_y)
+
+        # Update and draw the rotating circle
+        circle.update()
+        circle.draw(screen)
+
+        if ball_up:
             if ball_position_y > 300:
-                ball_position_y -= 0.8
+                ball_position_y -= 0.2
             else:
-                up_position = False
-                down_position = True
-        if down_position:
-            if ball_position_y < 650:
-                ball_position_y += 0.8
-            else:
-                down_position = False
+                ball_up = False
+        elif ball_position_y <= 500:
+            ball_up = False
+            ball_position_y += 0.2
 
-        # Drawing the purple ball
-        ball_purple.draw_ball(ball_position_x, ball_position_y)
+        # drawing the purple ball
+        ball_red.draw_ball(ball_position_x, ball_position_y)
 
         pygame.display.update()
-
-
-gameLoop()
