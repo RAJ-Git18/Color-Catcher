@@ -14,7 +14,7 @@ def gameLoop():
     ball_position_y = 500
 
     # Create the rotating circle
-    circle = RotatingCircle(1550 // 2, 800 // 2, 100, 0.02)
+    circle = RotatingCircle(1550 // 2, 800 // 2, 200, 0.003)
 
     # objects of the ball
     ball_purple = ball.Ball(screen, background_colour, 25)
