@@ -1,3 +1,4 @@
-background_image = pygame.transform.scale(
-#     background_image, (screen.get_width(), screen.get_height())
-# )
+        # else:
+        #     print("simk")
+        #     if ball_position_y < 500:
+        #         ball_position_y += 0.2

@@ -63,5 +63,3 @@ while running:
 
     # Update display
     pygame.display.update()
-
-

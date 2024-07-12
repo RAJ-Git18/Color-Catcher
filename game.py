@@ -18,7 +18,7 @@ def gameLoop():
     ball_position_y = 500
 
     # Create the rotating circle
-    circle = RotatingCircle(1550 // 2, 800 // 2, 100, 0.02)
+    circle = RotatingCircle(1550 // 2, 800 // 2, 200, 0.003)
 
     # objects of the ball
     ball_red = ball.Ball(screen, red_color, 20)
@@ -54,12 +54,12 @@ def gameLoop():
 
         if ball_up:
             if ball_position_y > 300:
-                ball_position_y -= 0.2
+                ball_position_y -= 0.5
             else:
                 ball_up = False
         elif ball_position_y <= 500:
             ball_up = False
-            ball_position_y += 0.2
+            ball_position_y += 0.5
 
         # drawing the purple ball
         ball_red.draw_ball(ball_position_x, ball_position_y)
