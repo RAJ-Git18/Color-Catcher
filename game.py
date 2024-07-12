@@ -1,5 +1,6 @@
 import pygame
 import ball
+from obstacles import RotatingCircle
 
 
 def gameLoop():
@@ -11,6 +12,9 @@ def gameLoop():
 
     ball_position_x = 400
     ball_position_y = 500
+
+    # Create the rotating circle
+    circle = RotatingCircle(1550 // 2, 800 // 2, 100, 0.02)
 
     # objects of the ball
     ball_purple = ball.Ball(screen, background_colour, 25)
@@ -39,6 +43,12 @@ def gameLoop():
             #             )
 
             #             print(ball_position_y)
+        
+        
+        # Update and draw the rotating circle
+        circle.update()
+        circle.draw(screen)
+        
         if ball_up:
             if ball_position_y > 300:
                 ball_position_y -= 0.2

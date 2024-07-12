@@ -1,6 +1,7 @@
 import pygame
 import game
 
+
 # Initialize Pygame
 pygame.init()
 
@@ -40,6 +41,7 @@ background_image = pygame.transform.scale(
     background_image, (screen.get_width(), screen.get_height())
 )
 
+
 # Main game loop
 running = True
 while running:
@@ -61,3 +63,5 @@ while running:
 
     # Update display
     pygame.display.update()
+
+
